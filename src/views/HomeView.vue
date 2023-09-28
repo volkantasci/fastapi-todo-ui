@@ -4,7 +4,7 @@
       <h1 class="text-center">All Todos</h1>
       <v-row>
         <v-col cols="12" md="4" v-for="todo in todos" :key="todo.id">
-          <to-do-card :cardData="todo"/>
+          <to-do-card :card-data="todo"/>
         </v-col>
       </v-row>
     </v-container>

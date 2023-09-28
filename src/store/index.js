@@ -18,20 +18,7 @@ export default new Vuex.Store({
     state: {
         navigation_drawer: false,
         apiRoot: 'http://localhost:8000',
-        todos: [
-            {
-                id: 1,
-                title: 'Todo 1',
-                description: 'Description 1',
-                completed: false,
-            },
-            {
-                id: 2,
-                title: 'Todo 2',
-                description: 'Description 2',
-                completed: true,
-            }
-        ],
+        todos: [],
     },
     getters: {
         navigation_drawer: state => state.navigation_drawer,
@@ -43,7 +30,7 @@ export default new Vuex.Store({
             state.navigation_drawer = !state.navigation_drawer
         },
         setTodos(state, payload) {
-            state.todos = payload.todos()
+            state.todos = payload.todos
         },
         deleteTodoFromList(state, payload) {
             const index = state.todos.findIndex(todo => todo.id === payload.todo.id)
@@ -53,6 +40,19 @@ export default new Vuex.Store({
             state.todos.push(payload.todo)
         },
     },
-    actions: {},
+    actions: {
+        toggleNavigationDrawer({commit}) {
+            commit('toggleNavigationDrawer')
+        },
+        setTodos({commit}, payload) {
+            commit('setTodos', payload)
+        },
+        deleteTodoFromList({commit}, payload) {
+            commit('deleteTodoFromList', payload)
+        },
+        addTodoToList({commit}, payload) {
+            commit('addTodoToList', payload)
+        },
+    },
     modules: {}
 })

@@ -17,14 +17,16 @@
           <v-text-field
               label="Title"
               outlined
+              v-model="title"
           />
           <v-textarea
               label="Description"
               outlined
+              v-model="description"
           />
         </v-card-text>
         <v-card-actions>
-          <v-spacer />
+          <v-spacer/>
           <v-btn
               color="primary"
               text
@@ -35,7 +37,7 @@
           <v-btn
               color="primary"
               text
-              @click="dialogState = false"
+              @click="addTodoIndex"
           >
             Save
           </v-btn>
@@ -46,11 +48,47 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+import axios from "axios";
+
 export default {
   name: 'NewTodoItem',
   data: () => ({
     dialogState: false,
+    title: '',
+    description: ''
   }),
+
+  computed: {
+    ...mapGetters({
+      api_url: 'apiRoot'
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      addTodo: 'addTodoToList'
+    }),
+
+    addTodoIndex() {
+      const todo_list_url = this.api_url + '/todos';
+      axios.post(todo_list_url, {
+        title: this.title,
+        description: this.description
+      })
+          .then(response => {
+            if (response.status === 201) {
+              this.addTodo({todo: response.data});
+              this.dialogState = false;
+            } else {
+              console.log(response);
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          })
+    }
+  }
 }
 
 </script>

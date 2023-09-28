@@ -28,8 +28,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            <v-icon>mdi-refresh</v-icon>
-            <span class="ml-2">Refresh</span>
+            <RefreshTodos />
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -40,10 +39,12 @@
 
 <script>
 import NewTodoItem from "@/components/NewTodoItem.vue";
+import RefreshTodos from "@/components/RefreshTodos.vue";
 export default {
   name: 'SideBar',
   components: {
-    NewTodoItem
+    NewTodoItem,
+    RefreshTodos
   },
   data: () => ({
     drawer: null,
