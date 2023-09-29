@@ -20,14 +20,6 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            <v-icon>mdi-delete</v-icon>
-            <span class="ml-2">Clear All</span>
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">
             <RefreshTodos />
           </v-list-item-title>
         </v-list-item-content>

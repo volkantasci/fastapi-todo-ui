@@ -16,7 +16,7 @@ const sortTodo = (a, b) => {
 
 export default new Vuex.Store({
     state: {
-        navigation_drawer: false,
+        navigation_drawer: true,
         apiRoot: 'http://localhost:8000',
         todos: [],
     },

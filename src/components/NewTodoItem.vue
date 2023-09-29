@@ -2,13 +2,14 @@
   <div class="new-todo-item">
     <v-dialog v-model="dialogState" max-width="600px">
       <template v-slot:activator="{attrs, on}">
-        <span
+        <v-btn
+            color="primary"
+            dark
             v-bind="attrs"
             v-on="on"
         >
-          <v-icon>mdi-plus</v-icon>
-          <span class="ml-2">New Todo Item</span>
-        </span>
+          New Todo Item
+        </v-btn>
       </template>
 
       <v-card>
